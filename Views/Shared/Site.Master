@@ -59,8 +59,8 @@
         <table border="0">
             <tr>
                 <td rowspan="2" style="border: 0px solid">
-                    <img src="images/acty_logo.png" alt="Book" height="40px" style="margin-bottom: 0px"><br />
-                    <label style="font-family: Cambria; font-size: 20px; font-weight: bold">Library Management</label>
+                    <img src="/images/acty_logo.png" alt="Book" height="40px" style="margin-bottom: 0px"><br />
+                    <label style="font-family: Cambria; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 3px #888888;">Library Management</label>
                 </td>
                 <td></td>
             </tr>

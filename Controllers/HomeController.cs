@@ -16,9 +16,9 @@ namespace BookAgency.Controllers
 
         public ActionResult Index(string id, int? page)
         {
-            var booksRecords = from s in db.books select s;
-            int pageSize = 3;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
+            var booksRecords = (from s in db.books select s).ToList();
             
             return View(booksRecords.ToPagedList(pageNumber, pageSize));
         }

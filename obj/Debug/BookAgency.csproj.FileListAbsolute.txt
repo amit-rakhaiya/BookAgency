@@ -44,9 +44,6 @@ B:\My Projects\ASP project\BookAgency\BookAgency\bin\PagedList.dll
 B:\My Projects\ASP project\BookAgency\BookAgency\bin\PagedList.Mvc.dll
 B:\My Projects\ASP project\BookAgency\BookAgency\bin\PagedList.xml
 B:\My Projects\ASP project\BookAgency\BookAgency\bin\PagedList.Mvc.xml
-E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.csprojResolveAssemblyReference.cache
-E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.dll
-E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.pdb
 E:\Projects\BookAgency\BookAgency\bin\BookAgency.dll
 E:\Projects\BookAgency\BookAgency\bin\BookAgency.pdb
 E:\Projects\BookAgency\BookAgency\bin\EntityFramework.dll
@@ -69,3 +66,5 @@ E:\Projects\BookAgency\BookAgency\bin\System.Web.Razor.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.Deployment.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.Razor.xml
+E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.dll
+E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.pdb

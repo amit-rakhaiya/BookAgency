@@ -23,7 +23,6 @@ namespace BookAgency.Controllers
 
         //
         // GET: /Books/Details/5
-
         public ViewResult Details(decimal id)
         {
             book book = db.books.Find(id);

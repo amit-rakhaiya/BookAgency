@@ -1,40 +1,44 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="PagedList.IPagedList<BookAgency.Models.book>>" %>
-<%@ Import namespace="PagedList" %>
-<%@ Import namespace="PagedList.Mvc" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<PagedList.IPagedList<BookAgency.Models.book>>" %>
+
+<%@ Import Namespace="PagedList" %>
+<%@ Import Namespace="PagedList.Mvc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    Acty System
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <form id="indexForm" runat="server">
+        <div>
+            <h3><span>New Arrivals</span></h3>
 
-<h2>New Arrivals</h2>
+            <table border="0" width="100%">
 
-<table border="0" width="100%">
-    
-<% int i = 0;
-    foreach (var item in Model) 
-    {
-        if (i % 3 == 0)
-        {
-            Response.Write("<tr>");
-        }
-        i++; %>
-        <td>
-            <img src="../images/<%: Html.DisplayFor(modelItem => item.photo) %>"  width="140" height="160" />
-        </td>
-    <%
-        if (i % 3 == 0)
-        {
-            Response.Write("</tr>");
-            i = 0;
-        } %>
-    
-<% } %>
+                <% 
+                    int i = 0;
+                    int cols = 4;
+                    foreach (var item in Model)
+                    {
+                        if (i % cols == 0)
+                        {
+                            Response.Write("<tr>");
+                        }
+                        i++; %>
+                <td>
+                    <a href='<%: Url.Action("Details", "Books", new { id=item.id }) %>'>
+                        <img src="../images/<%: Html.DisplayFor(modelItem => item.photo) %>" style="box-shadow: 5px 5px 3px #888888; width: 140px; height: 160px;" />
+                    </a>
+                </td>
+                <%
+                        if (i % cols == 0)
+                        {
+                            Response.Write("</tr>");
+                            i = 0;
+                        } %>
 
-</table>
-<%:
-    Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-     %>
-
+                <% } %>
+            </table>
+            <%:Html.PagedListPager(Model, Page => Url.Action("Index", new {Page}) ) %>
+        </div>
+    </form>
 </asp:Content>
