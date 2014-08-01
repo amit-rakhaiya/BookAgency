@@ -1,0 +1,327 @@
+.body1 {
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	background-image:url('/images/204.JPG');
+	background-repeat:repeat;
+}
+
+.pba
+{
+	font-family:Trebuchet MS;
+	font-size:40px;
+	font-weight:bolder;
+	color:Blue;
+}
+
+.new-arrivals-div
+{
+}
+
+.new-arrivals-div img::hover
+{
+	width:50px;
+}
+
+/* zoom*/
+.enlargeleft:hover {float: left;}
+a.enlargeleft:hover img {height: 120px;}
+.enlarge:hover {}
+a.enlarge:hover img {height: 120px;}
+/* zoom over*/
+
+#top-menu-line-main {
+	width: 100%;
+	height: 30px;
+	
+	background: #0079A8;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#FFFFFF;
+}
+
+
+
+#wrapper 
+{
+	padding-top:40px;
+	margin-right: auto;
+	margin-left: auto;
+	width:1000px;	
+	
+}
+
+
+/* Page */
+
+#page {
+	margin-right: auto;
+	margin-left: auto;
+	width:1000px;
+	border:0px solid;
+	border-radius:25px;
+	-moz-border-radius:25px; /* Firefox 3.6 and earlier */
+}
+#header
+{
+	padding-top:10px;
+	width:900px;
+	margin:auto;
+}
+
+
+a
+{
+	color:Gray;
+}
+
+/***********************************'   Left side Menu  *******************************/
+
+.navlist
+{
+	padding-left: 0;
+	margin-left: 0;
+	border-bottom: 1px solid #C2C2CA;
+	width: 145px;
+}
+
+.navlist li
+{
+list-style: none;
+margin: 0;
+padding: 0.25em;
+border-top: 1px solid #C2C2CA;
+}
+
+.navlist li a {
+	text-decoration: none;
+
+}
+
+/* Sidebars */
+
+#sidebar1 {
+	float: left;
+	width: 1px;		
+	background-color:Lime;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#sidebar2 {
+	float: right;
+	padding-top: 0px;
+	margin-top:0px;
+}
+
+.sidebarLeft {
+	float: left;
+	width: 150px;
+	padding-right: 5px;
+	font-size: 12px;
+	margin-top:5px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	/*border-right:1px solid gray;*/
+}
+
+.sidebarRight {
+	float: left;
+	width: 50px;
+	
+	margin-top:0px;
+	padding-right: 5px;
+	font-size: 12px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	/*border-right:1px solid gray;*/
+}
+
+.sidebarHeader
+{
+	height:25px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top:5px;
+	padding-left:10px;
+	font-size: 15px;
+	color:white;
+	background-image:url('../../book_demo/images/TopLinkActive_01_small.jpg');
+	border:1px solid;
+	border-radius: 15px 0px 15px 0px;
+	-moz-border-radius: 31px 29px 30px 30px;
+}
+
+
+.sidebar ul {
+	margin: 0;
+	padding-left: 15px;
+	list-style: none;
+}
+
+.sidebar li {
+	padding: 0 0 20px 0;
+}
+
+.sidebar li ul {
+}
+
+.sidebar li li {
+	margin: 0 20px 0 15px;
+	padding: 8px 0px;
+	border-bottom: 1px #BBBBBB dashed;
+}
+
+
+.sidebar li h2 {
+	height: 30px;
+	margin: 0 0 0 0;
+	padding: 10px 15px 0px 15px;
+	background: #890208 url(images/img05.jpg) no-repeat left top;
+	letter-spacing: -1px;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.sidebar a {
+}
+
+#content {
+	margin-right: auto;
+	margin-left: 160px;
+	width:840px;
+	
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	
+	font-size:15px;
+}
+
+.contentText
+{
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:5px;
+}
+
+
+
+
+/********************** Navigation ************************/
+nav {
+	border:1px solid #dcdcdc;
+	padding:11px 0;
+}
+
+.sf-menu{
+	min-height:27px;
+	padding:5px;
+	margin:10px;
+	font-size:0;
+	line-height:0;
+	position:relative;
+	border:1px solid #c7c5c5;
+}
+.sf-menu ul{
+	position:absolute;
+	top:-999em;
+	width:160px;
+	left:0;
+	display:none;
+	background:#fff;
+	padding:10px 0;
+	box-shadow:0 0 2px #ccc;
+}
+.sf-menu > li{
+	position:relative;
+	display:inline-block;
+	z-index:99;
+	border-left:1px solid #dcdcdc;
+}
+	.sf-menu > li:first-child {border:none;}
+.sf-menu > li > a {
+	text-decoration:none;
+	display:block !important;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	font-size:14px;
+	line-height:19px;
+	text-transform:lowercase;
+	text-decoration:none;
+	color:#2b2b2b;
+	padding:4px 43px;
+	text-shadow:1px 1px #fbfbfb;
+	position:relative;
+	z-index:99;
+}
+#page1 .sf-menu > li > a {
+	background:#fff;	
+}
+
+	.sf-menu > li.current > a, .sf-menu > li:hover > a, .sf-menu > li.sfHover > a {
+		color:#c7c5c5;
+		text-decoration:none;
+	}
+
+.sf-menu li:hover ul,.sf-menu li.sfHover ul{top:42px; left:0; z-index:999;}
+.sf-menu li:hover li ul,ul.sf-menu li.sfHover li ul{top:-999em}
+.sf-menu li.current,.sf-menu li:hover,.sf-menu li.sfHover{
+	text-decoration:none;
+}
+.sf-menu li li a{
+	display:block;
+	margin:0;
+	position:relative;
+	text-decoration:none;
+	font-size:14px;
+	line-height:18px;
+	color:#c7c5c5;
+	overflow:hidden;
+	padding:8px 5px 8px 15px;
+	text-transform:lowercase;
+	font-family: 'Open Sans', sans-serif;
+}
+.sf-menu li li > a:hover, .sf-menu li li.sfHover > a, .sf-menu li li.current > a{
+	color:#2b2b2b;
+}
+.sf-menu li li li a {
+	background:url(../images/header-bg.png);
+}
+.sf-menu li li{
+	float:none;
+	position:relative;
+	margin:0 0 1px 0;
+}
+
+.sf-menu li li:hover ul,ul.sf-menu li li.sfHover ul{left:163px;top:-10px;}
+
+.book-showcase
+{
+	
+	margin-left: 160px;
+	width:740px;
+	margin-top:0px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	
+}
+.book-title {
+font-size: 15px;
+font-weight:bold;
+color:Maroon;
+display: inline-block;
+zoom: 1;
+margin-right: .1px;
+}
+
+.book-desc
+{
+	width:50px;
+	color:Gray;
+	font-size:12px;
+}
+	
+.footer2-main {
+width: 100%;
+float: left;
+height: 41px;
+background: #006086;
+
+padding-top:0px;
+color:White;
+}

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookAgencyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BookAgencyEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="BookAgencyModel.admin" />
+    <EntitySet Name="books" EntityType="BookAgencyModel.book" />
+    <EntitySet Name="carts" EntityType="BookAgencyModel.cart" />
+    <EntitySet Name="categories" EntityType="BookAgencyModel.category" />
+    <EntitySet Name="orders" EntityType="BookAgencyModel.order" />
+    <EntitySet Name="order_item" EntityType="BookAgencyModel.order_item" />
+    <EntitySet Name="page_mgmt" EntityType="BookAgencyModel.page_mgmt" />
+    <EntitySet Name="publishers" EntityType="BookAgencyModel.publisher" />
+    <EntitySet Name="sysdiagrams" EntityType="BookAgencyModel.sysdiagram" />
+    <EntitySet Name="user_master" EntityType="BookAgencyModel.user_master" />
+  </EntityContainer>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="uname" />
+      <PropertyRef Name="pass" />
+    </Key>
+    <Property Name="uname" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="pass" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="book_name" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="book_isbn" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="photo" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="category_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="publisher_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="author" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="small_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="new_arrival" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="cart_id" />
+      <PropertyRef Name="book_id" />
+      <PropertyRef Name="qty" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="cart_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="book_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="qty" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="category_name" />
+      <PropertyRef Name="display_order" />
+      <PropertyRef Name="category_url_keyword" />
+      <PropertyRef Name="meta_title" />
+      <PropertyRef Name="meta_keyword" />
+      <PropertyRef Name="meta_desc" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="category_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="display_order" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="category_url_keyword" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cust_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="delivery_charge" Type="Double" Nullable="false" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="payment_status" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="status_detail" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="payment_amount" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="payment_currency" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="authcode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="txn_id" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="payer_email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="dname" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+    <Property Name="daddress" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="demail" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="dcity" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="dpincode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="dstate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="dcountry" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="dphone" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="admin_note" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="order_item">
+    <Key>
+      <PropertyRef Name="order_item_id" />
+      <PropertyRef Name="order_id" />
+      <PropertyRef Name="book_id" />
+      <PropertyRef Name="book_name" />
+      <PropertyRef Name="qty" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="subtotal" />
+    </Key>
+    <Property Name="order_item_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="order_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="book_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="book_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="qty" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="subtotal" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="page_mgmt">
+    <Key>
+      <PropertyRef Name="page_id" />
+    </Key>
+    <Property Name="page_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="page_name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="page_title" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="page_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="publisher">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="publisher_name" />
+      <PropertyRef Name="display_order" />
+      <PropertyRef Name="publisher_url_keyword" />
+      <PropertyRef Name="meta_title" />
+      <PropertyRef Name="meta_keyword" />
+      <PropertyRef Name="meta_desc" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="publisher_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="display_order" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="publisher_url_keyword" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_master">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="fname" />
+      <PropertyRef Name="lname" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="password" />
+      <PropertyRef Name="address" />
+      <PropertyRef Name="city" />
+      <PropertyRef Name="state" />
+      <PropertyRef Name="country" />
+      <PropertyRef Name="telephone" />
+      <PropertyRef Name="mobile" />
+      <PropertyRef Name="reg_date" />
+      <PropertyRef Name="comments" />
+      <PropertyRef Name="isactive" />
+    </Key>
+    <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Name="fname" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="lname" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="state" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="telephone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="reg_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="comments" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="isactive" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,185 @@
+/*
+#------------------------------------------------------------------------
+# yourshop.com - November 2010 (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+/* Style 2 */
+
+/* template.css */
+a { color: #007399; }
+a:hover, a:active, a:focus { color: #007399; }
+h1, h2, h3, h4, h5 { color:#0098ca; }
+h1.logo a { background:transparent url('../images/logo.png') no-repeat 0 0; }
+div.logo h1 a { color:#0098ca!important; }
+#gk-mainnav > div.gk-menu { background: transparent url('/images/menu_right.png') no-repeat right 0; }
+#gk-mainnav > div.gk-menu > ul { background: transparent url('/images/menu_bg.png') no-repeat left bottom; }
+#gk-mainnav > div.gk-menu > ul > li > a > span { background: transparent url('/images/menu_separator.png') no-repeat right bottom; }
+#gk-mainnav > div.gk-menu > ul > li.active > a,
+#gk-mainnav > div.gk-menu > ul > li:hover > a { background: transparent url('/images/menu_bg.png') no-repeat -459px top; }
+#gk-mainnav > div.gk-menu > ul > li.active:first-child > a,
+#gk-mainnav > div.gk-menu > ul > li:hover:first-child > a { background: transparent url('/images/menu_bg.png') no-repeat left top; }
+#gk-mainnav > div.gk-menu > ul > li.last:hover > a > span,
+#gk-mainnav > div.gk-menu > ul > li.last.active > a > span,
+#gk-mainnav > div.gk-menu > ul > li.active > a > span,
+#gk-mainnav > div.gk-menu > ul > li:hover > a > span { background: transparent url('/images/menu_separator.png') no-repeat right top; }
+#gk-mainnav li:hover + li.active > a,
+#gk-mainnav li.active + li:hover > a { background: transparent url('/images/style3/menu_bg.png') no-repeat -460px top!important; }
+#gk-mainnav li:first-child:hover + li.active > a,
+#gk-mainnav li:first-child.active + li:hover > a { background: transparent url('/images/menu_bg.png') no-repeat -459px top!important; }
+.gk-menu ul.level0 div.childcontent { background: #006b8f; }
+.gk-menu ul.level0 div.childcontent ul li:hover,
+.gk-menu ul.level0 div.childcontent ul li:hover>a { background: #037ea7;  }
+.gk-menu ul.level0 div.childcontent ul li { border-top: 1px solid #037ea7; }
+#gk-subnav { background: #37b5de; }
+#gk-subnav>div>ul>li>a:hover,
+#gk-subnav>div>ul>li.hover>a { background: #006b8f; }
+#gk-subnav>div>ul ul { background: #006b8f; }
+#gk-subnav>div>ul ul li { border-top: 1px solid #0079a1; }
+.moduletable_menu ul.menu>li.parent>a { background: transparent url('/images/menu_plus.png') no-repeat 12px 11px; }
+.moduletable_menu ul.menu>li:hover>a{ color:#0098ca; }
+.moduletable_menu ul.menu>li.active { background:#008fbe; border:1px solid #0e7093; border-bottom:none; }
+.moduletable_content>div>ul li:hover>a,
+.moduletable_content>ul li:hover>a{ color:#0098ca; }
+.moduletable.color1 > h3 { background: transparent url('/images/moduletable_header_color.png') repeat-x 0 0; border: 1px solid #0079a1; }
+.moduletable.color3 > h3 { background: transparent url('/images/moduletable_color3_left.png') no-repeat left 0; }
+.moduletable.color3 > h3 span { background: transparent url('/images/moduletable_color3_right.png') no-repeat right 0; }
+
+/* joomla.css */
+#gk_product_tabs li,
+.adminform button,
+#adminForm button,
+.button,
+a.readon,
+input[type="submit"],
+input[type="button"] { background:transparent url('/images/style3/btn.png') repeat-x 0 bottom; }
+.adminform button:hover,
+.adminform button:focus,
+#adminForm button:hover,
+#adminForm button:focus,
+.button:hover,
+.button:focus,
+a.readon:hover,
+a.readon:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus { background-position: 0 top; border-color: #0098ca; }
+.componentheading,
+h2.page_title { color: #0098ca; }
+.tool-title { background:#009cd0; }
+ul.pagination li:hover { background:#0098ca; border:1px solid #0079a1; }
+p.counter { background:#0098ca; }
+#mod_search_button { background: transparent url('../images/style3/search_btn.png') no-repeat center -28px; }
+#mod_search_button:hover { background-position: center top; border: 1px solid #0098ca; }
+
+/* gk_stuff.css */
+a.nsp_comments { background: transparent url('/images/style3/icon_comments.png') no-repeat 0 1px; }
+.nsp_vm .cart_form input[type=submit] { background:transparent url('/images/cart_btn.png') repeat-x 0 -1px; }
+.nsp_vm .cart_form input[type=submit]:hover { background-position: 0 bottom; }
+/*.gk_is_prev,
+.gk_is_next { border:1px solid #0079a1; background:#00a4da url('../images/style3/is_bg.png') repeat-x 0 center; }
+.gk_is_prev_btn,
+.gk_is_next_btn { background:transparent url('../images/style3/is_arrows.png') no-repeat 0 0; }
+.gk_is_next_btn { background:transparent url('../images/style3/is_arrows.png') no-repeat -48px 0; }
+.gk_is_prev_btn:hover { background-position:-96px 0; }
+.gk_is_next_btn:hover { background-position:-144px 0; }
+.gk_is_text .gk_is_readon { color:#00a2d7; }
+*/
+.moduletable_content table#cart #total_price { color: #0098ca; }
+.color1 .moduletable_content table#cart #total_price,
+.color1 .moduletable_content table#cart .extended_price { color: #0098ca; }
+.color2 .moduletable_content table#cart #total_price { color: #0098ca; }
+#total_price_td,
+#sbox-content #total_price { color: #0098ca; }
+#comments .comment-author { color:#0098ca; }
+#gk-items strong { color:#0098ca; }
+#gk-items { color:#0079a1; }
+#gk-cart .lf, #gk-cart .rf { color:#0098ca; }
+.addtocart_button,
+#cart_form input[type=submit]{ background:url('/images/style3/cart_btn.png') no-repeat left -1px!important; }
+.addtocart_button:hover, #cart_form input[type=submit]:hover{ background-position: left bottom!important; }
+#jc h4 { color: #0098ca; }
+
+/* k2.css */
+.itemHeader .itemTitle { color:#0098ca; }
+.itemComments ul.itemCommentsList li span.commentAuthorName { color:#0098ca; }
+.itemComments h3 { color:#0098ca; }
+.k2LatestCommentsBlock ul li span.lcUsername { color:#0098ca; }
+.k2ItemsBlock .moduleItemTitle { color:#0098ca!important; }
+.k2CategoriesListBlock ul.level0>li:hover>a{ color:#0098ca; }
+.k2CategoriesListBlock ul.level0>li.active { background:#0098ca url('/images/active_menu.png') repeat-x 0 top; border:1px solid #0079a1; }
+
+/* typo.css */
+pre, .gk_code1 { border-left:3px solid #0098ca !important; }
+.gk_code2 { border-top:3px solid #0098ca; border-bottom:3px solid #0098ca; }
+.gk_code3 { border-top:1px solid #0098ca; border-bottom:1px solid #0098ca; }
+.gk_code3 h4 { background:#fff; color:#0098ca; }
+.gk_blockTextLeft, .gk_blockTextRight, .gk_blockTextCenter { color:#0098ca; }
+blockquote div.gk_blockquote1 { background:transparent url(../images/style3/typography/open1.png) no-repeat left bottom; }
+blockquote div.gk_blockquote1 div { background:transparent url(../images/style3/typography/close1.png) no-repeat right top; }
+blockquote div.gk_blockquote2 { background:transparent url(../images/style3/typography/open1.png) no-repeat left top; }
+blockquote div.gk_blockquote2 div { background:transparent url(../images/style3/typography/close1.png) no-repeat right top; }
+blockquote div.gk_blockquote3 { background:transparent url(../images/style3/typography/open2.png) no-repeat left bottom; }
+blockquote div.gk_blockquote3 div { background:transparent url(../images/style3/typography/close2.png) no-repeat right top; }
+blockquote div.gk_blockquote4 { background:transparent url(../images/style3/typography/open2.png) no-repeat left top; }
+blockquote div.gk_blockquote4 div { background:transparent url(../images/style3/typography/close2.png) no-repeat right top; }
+div.gk_legend1 h4, div.gk_legend2 h4, div.gk_legend3 h4, div.gk_legend4 h4, div.gk_legend5 h4, div.gk_legend6 h4 { background: #fff; }
+div.gk_legend3 h4:first-child, div.gk_legend5 h4:first-child { background:#0098ca; color: #fff; }
+div.gk_legend4 h4:first-child, div.gk_legend6 h4:first-child { border:solid 1px #0098ca; }
+div.gk_legend1, div.gk_legend6 { border:solid 1px #0098ca; }
+div.gk_legend2, div.gk_legend4 { border-top:solid 1px #0098ca; border-bottom:solid 1px #0098ca; }
+div.gk_legend3 { border-top:solid 1px #0098ca; border-bottom:solid 1px #0098ca;}
+div.gk_legend5 { border:solid 1px #0098ca;}
+.gk_highlight-1 { background: #eee;  }
+.gk_highlight-2 { background:#bbb;  }
+.gk_highlight-3 { background: #0098ca; color:#fff; }
+.gk_highlight-4 { background:#000; color:#fff; }
+span.gk_clear { border-top:1px solid #eee; border-bottom:1px solid #eee; }
+span.gk_clear-1 { border-top:1px solid #0098ca;border-bottom:1px solid #0098ca; }
+span.gk_clear-2 { border-top:1px solid #0098ca; border-bottom:1px solid #0098ca; color: #0098ca; }
+span.gk_color { color: #888; }
+span.gk_color-1 { background: transparent; color: #0098ca; }
+span.gk_color-2 { border: 1px solid #aaa; }
+span.gk_color-3 { border: 1px solid #0098ca; }
+span.gk_color-4 { border: 1px solid #000; }
+span.gk_color-5 { color:#666; background:#eee;}
+span.gk_color-6 { background:#0098ca; color:#fff; }
+span.gk_color-7 { background:#000; color:#fff; }
+ul.gk_circle1 { list-style-image:url(../images/style3/typography/bullet3ul.png) !important; }
+ul.gk_circle2 { list-style-type:circle; }
+ul.gk_bullet1 { list-style-image:url(../images/style3/typography/bullet_ol_1_dark.png) !important; }
+ul.gk_bullet2 { list-style-image:url(../images/style3/typography/bullet1ul.png) !important; }
+ul.gk_bullet3 { list-style-image:url(../images/style3/typography/bullet2ul.png) !important; }
+ul.gk_bullet4 { list-style-image:url(../images/style3/typography/bullet_ol_1_color.png) !important; }
+ul.gk_square1 { list-style-type:square; }
+ul.gk_square2 { list-style-image:url(../images/style3/typography/bullet_squ1_dark.png) !important; }
+ul.gk_square3 { list-style-image:url(../images/style3/typography/bullet_squ1_color.png) !important; }
+div.gk_number1 span { background:transparent url(../images/style3/typography/bullet_ol_2.png) no-repeat center center; color:#fff; }
+div.gk_number2 span { background:transparent url(../images/style3/typography/bullet_ol_2_color.png) no-repeat center center; color:#fff; }
+
+/* vm.css */
+a.previous_page,
+ a.next_page { color: #0098ca; }
+.vm_cart_prod { border: 1px solid #c3e9f5; background: #0080aa; }
+.vm_cart_attributes { color: #e7f6fb; }
+.vm_cart_showcart a { color: #007ea7!important; }
+#gk_product_tabs li:hover,
+#gk_product_tabs li.gk_product_tab_active { background: #37b5de !important; border-color: #37b5de; }
+#vmMainPage .availabilityHeader { color:#0098ca; }
+#vmMainPage .vmCartContainer { background:transparent url('../images/product_box_left.png') no-repeat left bottom!important; }
+#vmMainPage .vmCartContainer form { background:transparent url('../images/product_box_right.png') no-repeat right bottom!important; }
+.cbContainer { border: 2px solid #0079a1; }
+.cbBox h3 { background: #0098ca url('../images/moduletable_header_color.png') repeat-x 0 top!important; }
