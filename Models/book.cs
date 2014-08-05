@@ -24,5 +24,10 @@ namespace BookAgency.Models
         public string small_desc { get; set; }
         public decimal price { get; set; }
         public decimal new_arrival { get; set; }
+    
+        public virtual category category { get; set; }
+        public virtual publisher publisher { get; set; }
+
+        
     }
 }

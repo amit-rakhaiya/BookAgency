@@ -6,32 +6,9 @@
     <edmx:StorageModels>
       <Schema Namespace="BookAgencyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BookAgencyModelStoreContainer">
-          <EntitySet Name="admin" EntityType="BookAgencyModel.Store.admin" store:Type="Tables" store:Schema="dbo" store:Name="admin">
-            <DefiningQuery>SELECT 
-      [admin].[uname] AS [uname], 
-      [admin].[pass] AS [pass]
-      FROM [dbo].[admin] AS [admin]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="books" EntityType="BookAgencyModel.Store.books" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="cart" EntityType="BookAgencyModel.Store.cart" store:Type="Tables" store:Schema="dbo" store:Name="cart">
-            <DefiningQuery>SELECT 
-      [cart].[cart_id] AS [cart_id], 
-      [cart].[book_id] AS [book_id], 
-      [cart].[qty] AS [qty], 
-      [cart].[user_id] AS [user_id]
-      FROM [dbo].[cart] AS [cart]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="category" EntityType="BookAgencyModel.Store.category" store:Type="Tables" store:Schema="dbo" store:Name="category">
-            <DefiningQuery>SELECT 
-      [category].[id] AS [id], 
-      [category].[category_name] AS [category_name], 
-      [category].[display_order] AS [display_order], 
-      [category].[category_url_keyword] AS [category_url_keyword], 
-      [category].[meta_title] AS [meta_title], 
-      [category].[meta_keyword] AS [meta_keyword], 
-      [category].[meta_desc] AS [meta_desc]
-      FROM [dbo].[category] AS [category]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="cart" EntityType="BookAgencyModel.Store.cart" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="category" EntityType="BookAgencyModel.Store.category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="order" EntityType="BookAgencyModel.Store.order" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="order_item" EntityType="BookAgencyModel.Store.order_item" store:Type="Tables" store:Schema="dbo" store:Name="order_item">
             <DefiningQuery>SELECT 
@@ -45,48 +22,16 @@
       FROM [dbo].[order_item] AS [order_item]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="page_mgmt" EntityType="BookAgencyModel.Store.page_mgmt" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="publisher" EntityType="BookAgencyModel.Store.publisher" store:Type="Tables" store:Schema="dbo" store:Name="publisher">
-            <DefiningQuery>SELECT 
-      [publisher].[id] AS [id], 
-      [publisher].[publisher_name] AS [publisher_name], 
-      [publisher].[display_order] AS [display_order], 
-      [publisher].[publisher_url_keyword] AS [publisher_url_keyword], 
-      [publisher].[meta_title] AS [meta_title], 
-      [publisher].[meta_keyword] AS [meta_keyword], 
-      [publisher].[meta_desc] AS [meta_desc]
-      FROM [dbo].[publisher] AS [publisher]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="sysdiagrams" EntityType="BookAgencyModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="user_master" EntityType="BookAgencyModel.Store.user_master" store:Type="Tables" store:Schema="dbo" store:Name="user_master">
-            <DefiningQuery>SELECT 
-      [user_master].[user_id] AS [user_id], 
-      [user_master].[fname] AS [fname], 
-      [user_master].[lname] AS [lname], 
-      [user_master].[email] AS [email], 
-      [user_master].[password] AS [password], 
-      [user_master].[address] AS [address], 
-      [user_master].[city] AS [city], 
-      [user_master].[state] AS [state], 
-      [user_master].[country] AS [country], 
-      [user_master].[telephone] AS [telephone], 
-      [user_master].[mobile] AS [mobile], 
-      [user_master].[reg_date] AS [reg_date], 
-      [user_master].[comments] AS [comments], 
-      [user_master].[isactive] AS [isactive]
-      FROM [dbo].[user_master] AS [user_master]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="publisher" EntityType="BookAgencyModel.Store.publisher" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_books_category" Association="BookAgencyModel.Store.FK_books_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_books_publisher" Association="BookAgencyModel.Store.FK_books_publisher">
+            <End Role="publisher" EntitySet="publisher" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
         </EntityContainer>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BookAgency.dbo.admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="admin">
-          <Key>
-            <PropertyRef Name="uname" />
-            <PropertyRef Name="pass" />
-          </Key>
-          <Property Name="uname" Type="varchar" Nullable="false" MaxLength="150" />
-          <Property Name="pass" Type="varchar" Nullable="false" MaxLength="150" />
-        </EntityType>
         <EntityType Name="books">
           <Key>
             <PropertyRef Name="id" />
@@ -102,33 +47,18 @@
           <Property Name="price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="new_arrival" Type="numeric" Nullable="false" Precision="1" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BookAgency.dbo.cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="cart">
           <Key>
             <PropertyRef Name="cart_id" />
-            <PropertyRef Name="book_id" />
-            <PropertyRef Name="qty" />
-            <PropertyRef Name="user_id" />
           </Key>
           <Property Name="cart_id" Type="numeric" Nullable="false" Precision="11" />
           <Property Name="book_id" Type="numeric" Nullable="false" Precision="11" />
           <Property Name="qty" Type="numeric" Nullable="false" Precision="10" />
           <Property Name="user_id" Type="numeric" Nullable="false" Precision="11" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BookAgency.dbo.category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_name" />
-            <PropertyRef Name="display_order" />
-            <PropertyRef Name="category_url_keyword" />
-            <PropertyRef Name="meta_title" />
-            <PropertyRef Name="meta_keyword" />
-            <PropertyRef Name="meta_desc" />
           </Key>
           <Property Name="id" Type="numeric" Nullable="false" Precision="11" />
           <Property Name="category_name" Type="varchar" Nullable="false" MaxLength="100" />
@@ -200,18 +130,9 @@
           <Property Name="meta_keyword" Type="text" Nullable="false" />
           <Property Name="meta_desc" Type="text" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BookAgency.dbo.publisher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="publisher">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="publisher_name" />
-            <PropertyRef Name="display_order" />
-            <PropertyRef Name="publisher_url_keyword" />
-            <PropertyRef Name="meta_title" />
-            <PropertyRef Name="meta_keyword" />
-            <PropertyRef Name="meta_desc" />
           </Key>
           <Property Name="id" Type="numeric" Nullable="false" Precision="11" />
           <Property Name="publisher_name" Type="varchar" Nullable="false" MaxLength="100" />
@@ -221,58 +142,36 @@
           <Property Name="meta_keyword" Type="text" Nullable="false" />
           <Property Name="meta_desc" Type="text" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BookAgency.dbo.user_master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="user_master">
-          <Key>
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="fname" />
-            <PropertyRef Name="lname" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="password" />
-            <PropertyRef Name="address" />
-            <PropertyRef Name="city" />
-            <PropertyRef Name="state" />
-            <PropertyRef Name="country" />
-            <PropertyRef Name="telephone" />
-            <PropertyRef Name="mobile" />
-            <PropertyRef Name="reg_date" />
-            <PropertyRef Name="comments" />
-            <PropertyRef Name="isactive" />
-          </Key>
-          <Property Name="user_id" Type="numeric" Nullable="false" Precision="11" />
-          <Property Name="fname" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="lname" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="email" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="password" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="address" Type="varchar" Nullable="false" MaxLength="300" />
-          <Property Name="city" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="state" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="country" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="telephone" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="mobile" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="reg_date" Type="date" Nullable="false" />
-          <Property Name="comments" Type="text" Nullable="false" />
-          <Property Name="isactive" Type="numeric" Nullable="false" Precision="1" />
-        </EntityType>
+        <Association Name="FK_books_category">
+          <End Role="category" Type="BookAgencyModel.Store.category" Multiplicity="1" />
+          <End Role="books" Type="BookAgencyModel.Store.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_books_publisher">
+          <End Role="publisher" Type="BookAgencyModel.Store.publisher" Multiplicity="1" />
+          <End Role="books" Type="BookAgencyModel.Store.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publisher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="publisher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookAgencyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="BookAgencyEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="admins" EntityType="BookAgencyModel.admin" />
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="books" EntityType="BookAgencyModel.book" />
           <EntitySet Name="carts" EntityType="BookAgencyModel.cart" />
           <EntitySet Name="categories" EntityType="BookAgencyModel.category" />
@@ -280,17 +179,15 @@
           <EntitySet Name="order_item" EntityType="BookAgencyModel.order_item" />
           <EntitySet Name="page_mgmt" EntityType="BookAgencyModel.page_mgmt" />
           <EntitySet Name="publishers" EntityType="BookAgencyModel.publisher" />
-          <EntitySet Name="sysdiagrams" EntityType="BookAgencyModel.sysdiagram" />
-          <EntitySet Name="user_master" EntityType="BookAgencyModel.user_master" />
+          <AssociationSet Name="FK_books_category" Association="BookAgencyModel.FK_books_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_books_publisher" Association="BookAgencyModel.FK_books_publisher">
+            <End Role="publisher" EntitySet="publishers" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="admin">
-          <Key>
-            <PropertyRef Name="uname" />
-            <PropertyRef Name="pass" />
-          </Key>
-          <Property Name="uname" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="pass" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="book">
           <Key>
             <PropertyRef Name="id" />
@@ -305,13 +202,12 @@
           <Property Name="small_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="new_arrival" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+          <NavigationProperty Name="category" Relationship="BookAgencyModel.FK_books_category" FromRole="books" ToRole="category" />
+          <NavigationProperty Name="publisher" Relationship="BookAgencyModel.FK_books_publisher" FromRole="books" ToRole="publisher" />
         </EntityType>
         <EntityType Name="cart">
           <Key>
             <PropertyRef Name="cart_id" />
-            <PropertyRef Name="book_id" />
-            <PropertyRef Name="qty" />
-            <PropertyRef Name="user_id" />
           </Key>
           <Property Name="cart_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
           <Property Name="book_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
@@ -321,12 +217,6 @@
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_name" />
-            <PropertyRef Name="display_order" />
-            <PropertyRef Name="category_url_keyword" />
-            <PropertyRef Name="meta_title" />
-            <PropertyRef Name="meta_keyword" />
-            <PropertyRef Name="meta_desc" />
           </Key>
           <Property Name="id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
           <Property Name="category_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
@@ -335,6 +225,7 @@
           <Property Name="meta_title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="books" Relationship="BookAgencyModel.FK_books_category" FromRole="category" ToRole="books" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -398,12 +289,6 @@
         <EntityType Name="publisher">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="publisher_name" />
-            <PropertyRef Name="display_order" />
-            <PropertyRef Name="publisher_url_keyword" />
-            <PropertyRef Name="meta_title" />
-            <PropertyRef Name="meta_keyword" />
-            <PropertyRef Name="meta_desc" />
           </Key>
           <Property Name="id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
           <Property Name="publisher_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
@@ -412,63 +297,38 @@
           <Property Name="meta_title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="books" Relationship="BookAgencyModel.FK_books_publisher" FromRole="publisher" ToRole="books" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="user_master">
-          <Key>
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="fname" />
-            <PropertyRef Name="lname" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="password" />
-            <PropertyRef Name="address" />
-            <PropertyRef Name="city" />
-            <PropertyRef Name="state" />
-            <PropertyRef Name="country" />
-            <PropertyRef Name="telephone" />
-            <PropertyRef Name="mobile" />
-            <PropertyRef Name="reg_date" />
-            <PropertyRef Name="comments" />
-            <PropertyRef Name="isactive" />
-          </Key>
-          <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-          <Property Name="fname" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="lname" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="address" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
-          <Property Name="city" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="state" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="country" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="telephone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="reg_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="comments" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="isactive" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
-        </EntityType>
+        <Association Name="FK_books_category">
+          <End Role="category" Type="BookAgencyModel.category" Multiplicity="1" />
+          <End Role="books" Type="BookAgencyModel.book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_books_publisher">
+          <End Role="publisher" Type="BookAgencyModel.publisher" Multiplicity="1" />
+          <End Role="books" Type="BookAgencyModel.book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publisher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="publisher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BookAgencyModelStoreContainer" CdmEntityContainer="BookAgencyEntities">
-          <EntitySetMapping Name="admins">
-            <EntityTypeMapping TypeName="BookAgencyModel.admin">
-              <MappingFragment StoreEntitySet="admin">
-                <ScalarProperty Name="uname" ColumnName="uname" />
-                <ScalarProperty Name="pass" ColumnName="pass" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="BookAgencyModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="books">
             <EntityTypeMapping TypeName="BookAgencyModel.book">
               <MappingFragment StoreEntitySet="books">
@@ -574,37 +434,6 @@
                 <ScalarProperty Name="meta_title" ColumnName="meta_title" />
                 <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
                 <ScalarProperty Name="meta_desc" ColumnName="meta_desc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BookAgencyModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="user_master">
-            <EntityTypeMapping TypeName="BookAgencyModel.user_master">
-              <MappingFragment StoreEntitySet="user_master">
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="fname" ColumnName="fname" />
-                <ScalarProperty Name="lname" ColumnName="lname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
-                <ScalarProperty Name="comments" ColumnName="comments" />
-                <ScalarProperty Name="isactive" ColumnName="isactive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

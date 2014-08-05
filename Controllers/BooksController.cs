@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookAgency.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BookAgency.Controllers
 { 
@@ -19,6 +21,29 @@ namespace BookAgency.Controllers
         public ViewResult Index()
         {
             return View(db.books.ToList());
+        }
+
+        public ActionResult Search(string searchString)
+        {
+            if (String.IsNullOrEmpty(searchString) == false)
+            {
+                
+            }
+            var booksRecords = db.books.Where(s =>
+                                        s.book_name.ToUpper().Contains(searchString.ToUpper()) ||
+                                        s.book_isbn.ToUpper().Contains(searchString.ToUpper()) ||
+                                        s.author.ToUpper().Contains(searchString.ToUpper()));
+            return View(booksRecords);
+        }
+
+        private List<SelectListItem> GetCategories()
+        {
+            var selectList = new List<SelectListItem>();
+            foreach (category c in db.categories)
+            {
+                selectList.Add(new SelectListItem { Value = c.id + "", Text = c.category_name });
+            }
+            return selectList;
         }
 
         //

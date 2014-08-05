@@ -6,6 +6,7 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
+    <link rel="icon" href="../../images/fevicon_site.png" />
     <link rel="stylesheet" href="../../Content/css/patel-style.css" type="text/css" />
     <link rel="stylesheet" href="../../Content/css/layout.css" type="text/css" />
     <link rel="stylesheet" href="../../Content/css/template.css" type="text/css" />
@@ -95,7 +96,7 @@
                             <ul id="gk-menu" class="level0">
                                 <li class="mega"><a href="#" class="mega"
                                     id="menu1"><span class="menu-title"><span>Home</span></span></a></li>
-                                <li class="mega"><a href="#" class="mega" id="A1"><span class="menu-title"><span>Search</span></span></a></li>
+                                <li class="mega"><%:Html.ActionLink("Search", "Search", "Books") %></li>
                                 <li class="mega"><a href="#" class="mega" id="A2"><span class="menu-title"><span>New Arrival</span></span></a></li>
                                 <li class="mega"><a href="#" class="mega" id="A3"><span class="menu-title"><span>Request</span></span></a></li>
                                 <li class="mega"><a href="#" class="mega" id="A4"><span class="menu-title"><span>Contact</span></span></a></li>

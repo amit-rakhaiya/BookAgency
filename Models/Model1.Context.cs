@@ -25,7 +25,6 @@ namespace BookAgency.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<admin> admins { get; set; }
         public DbSet<book> books { get; set; }
         public DbSet<cart> carts { get; set; }
         public DbSet<category> categories { get; set; }
@@ -33,7 +32,5 @@ namespace BookAgency.Models
         public DbSet<order_item> order_item { get; set; }
         public DbSet<page_mgmt> page_mgmt { get; set; }
         public DbSet<publisher> publishers { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<user_master> user_master { get; set; }
     }
 }

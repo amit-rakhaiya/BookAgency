@@ -14,6 +14,11 @@ namespace BookAgency.Models
     
     public partial class category
     {
+        public category()
+        {
+            this.books = new HashSet<book>();
+        }
+    
         public decimal id { get; set; }
         public string category_name { get; set; }
         public decimal display_order { get; set; }
@@ -21,5 +26,7 @@ namespace BookAgency.Models
         public string meta_title { get; set; }
         public string meta_keyword { get; set; }
         public string meta_desc { get; set; }
+    
+        public virtual ICollection<book> books { get; set; }
     }
 }

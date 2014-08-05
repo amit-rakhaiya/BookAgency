@@ -14,9 +14,15 @@ body.fs5 { font-size:15px; }
 
 body.fs6 { font-size:16px; }
 
-a { color: #456004; text-decoration:none; }
+/*a { color: #456004; text-decoration:none; }
 
-a:hover, a:active, a:focus { color: #456004; text-decoration:underline; }
+a:hover, a:active, a:focus { color: #456004; text-decoration:underline; }*/
+
+.top-login-links {
+}
+.top-login-links a:link	{color:#FFFFFF; text-decoration : none;}
+.top-login-links a:visited {color:#FFFFFF; text-decoration : none;}
+.top-login-links a:hover {color:#FFFFFF; text-decoration : none;}
 
 .column p, .column pre, .column blockquote, .column ol, .column ul { margin:0; padding:0; }
 

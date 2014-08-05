@@ -4,17 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9226de03b9894f8da1b9b8579a34a95c" Name="Diagram1">
-        <EntityTypeShape EntityType="BookAgencyModel.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.book" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.cart" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.category" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.order" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.order_item" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.page_mgmt" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.publisher" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookAgencyModel.user_master" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="a593450d6b474d0c9ba380031ea04694" Name="Diagram1">
+        <EntityTypeShape EntityType="BookAgencyModel.book" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.cart" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.category" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.order" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.order_item" Width="1.5" PointX="6.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.page_mgmt" Width="1.5" PointX="7.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookAgencyModel.publisher" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="BookAgencyModel.FK_books_category" ManuallyRouted="false" />
+        <AssociationConnector Association="BookAgencyModel.FK_books_publisher" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

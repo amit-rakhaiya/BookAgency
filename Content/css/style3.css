@@ -19,8 +19,9 @@
 /* Style 2 */
 
 /* template.css */
-a { color: #007399; }
+/*a { color: #007399; }
 a:hover, a:active, a:focus { color: #007399; }
+*/
 h1, h2, h3, h4, h5 { color:#0098ca; }
 h1.logo a { background:transparent url('../images/logo.png') no-repeat 0 0; }
 div.logo h1 a { color:#0098ca!important; }
