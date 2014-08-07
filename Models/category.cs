@@ -11,7 +11,8 @@ namespace BookAgency.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class category
     {
         public category()
@@ -20,11 +21,25 @@ namespace BookAgency.Models
         }
     
         public decimal id { get; set; }
+
+        [Required()]
+        [Display(Name = "Name")]
         public string category_name { get; set; }
+
+        [Required()]
+        [Display(Name = "Display Order")]
         public decimal display_order { get; set; }
+
+        [Display(Name = "Url Keyword")]
         public string category_url_keyword { get; set; }
+
+        [Display(Name = "Meta-Title")]
         public string meta_title { get; set; }
+
+        [Display(Name = "Meta-Keyword")]
         public string meta_keyword { get; set; }
+
+        [Display(Name = "Meta-Desc")]
         public string meta_desc { get; set; }
     
         public virtual ICollection<book> books { get; set; }

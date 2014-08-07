@@ -10,15 +10,15 @@ using PagedList.Mvc;
 namespace BookAgency.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class HomeController : ApplicationController
     {
-        private BookAgencyEntities db = new BookAgencyEntities();
-
         public ActionResult Index(string id, int? page)
         {
             int pageSize = 12;
             int pageNumber = (page ?? 1);
-            var booksRecords = (from s in db.books select s).ToList();
+
+            // Fetching data from application controller
+            var booksRecords = ((IEnumerable<book>)ViewData["new_arrivals"]).ToList();
             
             return View(booksRecords.ToPagedList(pageNumber, pageSize));
         }

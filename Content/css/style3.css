@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5 { color:#0098ca; }
 h1.logo a { background:transparent url('../images/logo.png') no-repeat 0 0; }
 div.logo h1 a { color:#0098ca!important; }
 #gk-mainnav > div.gk-menu { background: transparent url('/images/menu_right.png') no-repeat right 0; }
-#gk-mainnav > div.gk-menu > ul { background: transparent url('/images/menu_bg.png') no-repeat left bottom; }
+#gk-mainnav > div.gk-menu > ul { background: transparent url('/images/menu_bg.png') repeat left bottom; }
 #gk-mainnav > div.gk-menu > ul > li > a > span { background: transparent url('/images/menu_separator.png') no-repeat right bottom; }
 #gk-mainnav > div.gk-menu > ul > li.active > a,
 #gk-mainnav > div.gk-menu > ul > li:hover > a { background: transparent url('/images/menu_bg.png') no-repeat -459px top; }
@@ -62,10 +62,7 @@ div.logo h1 a { color:#0098ca!important; }
 #gk_product_tabs li,
 .adminform button,
 #adminForm button,
-.button,
 a.readon,
-input[type="submit"],
-input[type="button"] { background:transparent url('/images/style3/btn.png') repeat-x 0 bottom; }
 .adminform button:hover,
 .adminform button:focus,
 #adminForm button:hover,
@@ -74,10 +71,6 @@ input[type="button"] { background:transparent url('/images/style3/btn.png') repe
 .button:focus,
 a.readon:hover,
 a.readon:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input[type="button"]:hover,
-input[type="button"]:focus { background-position: 0 top; border-color: #0098ca; }
 .componentheading,
 h2.page_title { color: #0098ca; }
 .tool-title { background:#009cd0; }

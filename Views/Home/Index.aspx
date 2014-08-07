@@ -10,7 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="indexForm" runat="server">
         <div>
-            <h3><span>New Arrivals</span></h3>
+            <h3 style="border-bottom: solid 1px; border-top: solid 1px;">New Arrivals</h3>
 
             <table border="0" width="100%">
 

@@ -2,31 +2,10 @@
 <%@ Import Namespace="PagedList" %>
 <%@ Import Namespace="PagedList.Mvc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Book Details
+    <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .table-book-details {
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-            .table-book-details TH {
-                text-align: left;
-                color: green;
-                vertical-align: top;
-                font-size: 12px;
-            }
-
-            .table-book-details TD {
-                text-align: left;
-                vertical-align: top;
-                font-size: 12px;
-                margin-left: 10px;
-            }
-    </style>
-
     <h3 style="margin-bottom: 0px;"><%: Html.DisplayFor(model => model.book_name) %></h3>
     <hr />
     <table border="0" class="table-book-details" cellspacing="15px;">

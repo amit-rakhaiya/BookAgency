@@ -11,23 +11,48 @@ namespace BookAgency.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class book
     {
         public decimal id { get; set; }
+
+        [Required()]
+        [Display(Name="Name")]
         public string book_name { get; set; }
+
+        [Required()]
+        [Display(Name = "ISBN")]
         public string book_isbn { get; set; }
+
+        [Display(Name = "Photo")]
         public string photo { get; set; }
+
+        [Required()]
+        [Display(Name = "Category")]
         public decimal category_id { get; set; }
+
+        [Required()]
+        [Display(Name = "Publisher")]
         public decimal publisher_id { get; set; }
+
+        [Required()]
+        [Display(Name = "Auther")]
         public string author { get; set; }
+
+        [Display(Name = "Details")]
         public string small_desc { get; set; }
+
+        [Required()]
+        [Display(Name = "Price")]
+        [Range(0.01, 5000.00, ErrorMessage = "Please enter a valid price")]
         public decimal price { get; set; }
+
+        [Required()]
+        [Display(Name = "New Arrival")]
         public decimal new_arrival { get; set; }
     
         public virtual category category { get; set; }
         public virtual publisher publisher { get; set; }
-
-        
     }
 }

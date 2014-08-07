@@ -9,7 +9,7 @@ using BookAgency.Models;
 
 namespace BookAgency.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ApplicationController
     {
 
         //

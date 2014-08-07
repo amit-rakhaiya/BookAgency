@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<BookAgency.Models.book>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Edit
+    <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Edit</h2>
+<h2><%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %></h2>
 
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
@@ -14,7 +14,7 @@
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
-        <legend>book</legend>
+        <legend>Upate Book</legend>
 
         <%: Html.HiddenFor(model => model.id) %>
 
@@ -46,7 +46,7 @@
             <%: Html.LabelFor(model => model.category_id) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.category_id) %>
+            <%: Html.DropDownList("CategoryId",String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.category_id) %>
         </div>
 
@@ -54,7 +54,7 @@
             <%: Html.LabelFor(model => model.publisher_id) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.publisher_id) %>
+            <%: Html.DropDownList("PublisherId",String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.publisher_id) %>
         </div>
 
@@ -91,13 +91,9 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save" /> | <%: Html.ActionLink("Back to List", "Index") %>
         </p>
     </fieldset>
 <% } %>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
 
 </asp:Content>

@@ -17,7 +17,7 @@
 */
 
 .wrap { width:100%; clear:both; }
-.main { max-width:900px; margin:0 auto; /*position:relative;*/ }
+.main { max-width:1100px; margin:0 auto; /*position:relative;*/ }
 .static { position:static; }
 .column { overflow:hidden; float:left; }
 .gk-mass { clear:both; margin-bottom:10px; }

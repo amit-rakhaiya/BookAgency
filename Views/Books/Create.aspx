@@ -1,20 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<BookAgency.Models.book>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Create
+    <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <h3><%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %></h3>
 
-<h2>Create</h2>
+    <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
-<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
-<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
-
-<% using (Html.BeginForm()) { %>
+    <% using (Html.BeginForm())
+       { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
-        <legend>book</legend>
+        <legend>Add New Book</legend>
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.book_name) %>
@@ -44,7 +45,7 @@
             <%: Html.LabelFor(model => model.category_id) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.category_id) %>
+            <%: Html.DropDownList("CategoryId",String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.category_id) %>
         </div>
 
@@ -52,7 +53,7 @@
             <%: Html.LabelFor(model => model.publisher_id) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.publisher_id) %>
+            <%: Html.DropDownList("PublisherId",String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.publisher_id) %>
         </div>
 
@@ -68,7 +69,7 @@
             <%: Html.LabelFor(model => model.small_desc) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.small_desc) %>
+            <%: Html.TextAreaFor(model => model.small_desc) %>
             <%: Html.ValidationMessageFor(model => model.small_desc) %>
         </div>
 
@@ -89,13 +90,9 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create" /> | <%: Html.ActionLink("Back to List", "Index") %>
         </p>
     </fieldset>
-<% } %>
-
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
+    <% } %>
 
 </asp:Content>

@@ -7,18 +7,19 @@
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
     <link rel="icon" href="../../images/fevicon_site.png" />
-    <link rel="stylesheet" href="../../Content/css/patel-style.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/template.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/gk_stuff.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/css3.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/Copy of styles.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/style3.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/vm.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="../../Content/css/css.css" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/patel-style.css") %>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/layout.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/template.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/gk_stuff.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/css3.css")%>"  type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/Copy of styles.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/style3.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/vm.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/style.css")%>" type="text/css" />
+    <link rel="stylesheet" href="<%: Url.Content("~/Content/css/css.css")%>" type="text/css" />
     <link rel="stylesheet" href="../../Content/css/mega.css" type="text/css" />
     <link rel="stylesheet" href="../../Content/PagedList.css" type="text/css" />
+    
     <script src="<%: Url.Content("~/Scripts/jquery-1.7.1.min.js") %>" type="text/javascript"></script>
 </head>
 <body class="body1" runat="server">
@@ -28,11 +29,11 @@
         <table width="100%">
             <tr>
                 <td align="right">
-                <%
-                    if (Request.Cookies[FormsAuthentication.FormsCookieName] == null)
-                    {
-                %>
-                        <table class="top-login-links">
+                    <%
+                        if (Request.Cookies[FormsAuthentication.FormsCookieName] == null)
+                        {
+                    %>
+                    <table class="top-login-links">
                         <tr>
                             <td>
                                 <%:Html.ActionLink("Login", "LogOn", "Account")%> | 
@@ -42,34 +43,32 @@
                             </td>
                         </tr>
                     </table>
-               <%
-                    }
-                    else
-                    {
-                %>
-                
+                    <%
+                        }
+                        else
+                        {
+                    %>
+
                     <table class="top-login-links">
                         <tr>
                             <td>
                                 <%= "Welcome " + FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name  %>, 
                             </td>
                             <td align="right" valign="middle">
-                                <a href="#"> My Account </a> |
-                                <a href="#"> Cart </a> |
+                                <a href="#">My Account </a>|
+                                <a href="#">Cart </a>|
                             </td>
                             <td>
                                 <%:Html.ActionLink("Log out", "LogOff", "Account") %>
                             </td>
                         </tr>
                     </table>
-                <%
-                    }
-                %>
+                    <%
+                        }
+                    %>
                 </td>
             </tr>
         </table>
-
-
     </div>
 
     <!-- Logo -->
@@ -77,8 +76,10 @@
         <table border="0">
             <tr>
                 <td rowspan="2" style="border: 0px solid">
-                    <img src="/images/acty_logo.png" alt="Book" height="40px" style="margin-bottom: 0px"><br />
-                    <label style="font-family: Cambria; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 3px #888888;">Library Management</label>
+                    <a href="<%= Url.Action("Index", "Home") %>" style="text-decoration: none;">
+                        <img src="/images/acty_logo.png" alt="Book" height="40px" style="margin-bottom: 0px"><br />
+                        <label style="font-family: Cambria; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 3px #888888;">Library Management</label>
+                    </a>
                 </td>
                 <td></td>
             </tr>
@@ -94,9 +95,20 @@
                     <div id="gk-mainnav">
                         <div class="gk-menu clearfix">
                             <ul id="gk-menu" class="level0">
-                                <li class="mega"><a href="#" class="mega"
-                                    id="menu1"><span class="menu-title"><span>Home</span></span></a></li>
-                                <li class="mega"><%:Html.ActionLink("Search", "Search", "Books") %></li>
+                                <li class="mega">
+                                    <a href="/" class="mega" id="A5">
+                                        <span class="menu-title">
+                                            <span>Home</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="mega">
+                                    <a href="<%= Url.Action("Search", "books") %>" class="mega" id="A1">
+                                        <span class="menu-title">
+                                            <span>Search</span>
+                                        </span>
+                                    </a>
+                                </li>
                                 <li class="mega"><a href="#" class="mega" id="A2"><span class="menu-title"><span>New Arrival</span></span></a></li>
                                 <li class="mega"><a href="#" class="mega" id="A3"><span class="menu-title"><span>Request</span></span></a></li>
                                 <li class="mega"><a href="#" class="mega" id="A4"><span class="menu-title"><span>Contact</span></span></a></li>
@@ -128,6 +140,74 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="gk-right" class="column" style="width: 22%">
+                                <div class="gk-mass-bottom clearfix">
+                                    <div class="moduletable color3">
+                                        <h3><span class="lefttitle">Admin Tools</span></h3>
+                                        <div class="moduletable_content">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td background="images/admin-menu-middle.gif" style="background-repeat: repeat-y;" valign="top">
+                                                        <table id="sliding-navigation" align="left" class="menutable">
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="menulink"><a href="page_mgmt.php" class="greylink11">
+                                                                        Manage CMS Pages </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li1"><a href="<%=Url.Action("Index","Category") %>" class="greylink11">
+                                                                        Manage Categories </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li2"><a href="publishers_mgmt.php" class="greylink11">
+                                                                        Manage Publishers </a></li>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li3"><a href="<%=Url.Action("Index","Books") %>" class="greylink11">
+                                                                        Manage Books </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li4"><a href="usermgmt.php" class="greylink11">
+                                                                        Manage Users </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li5"><a href="order_mgmt.php" class="greylink11">
+                                                                        Manage Orders </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li6"><a href="bulksms_mgmt.php" class="greylink11">
+                                                                        Send Bulk SMS </a></li>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <li class="sliding-element" id="Li7"><a href="change_pass.php" class="greylink11">
+                                                                        Change Password </a></li>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- //CONTENT -->
                             <div id="gk-left" class="column" style="width: 22%">
                                 <div class="inner cleft ctop cbottom">
@@ -135,34 +215,31 @@
                                         <div class="moduletable color3">
                                             <h3><span class="lefttitle">New Arrival Books</span></h3>
                                             <div class="moduletable_content">
-                                                <marquee loop="infinite" behavior="scroll" direction="up" height="190" width="230"
-                                                    scrollamount="1" scrolldelay="30" truespeed onmouseover="this.stop()" onmouseout="this.start()"
+                                                <marquee
+                                                    loop="infinite"
+                                                    behavior="scroll"
+                                                    direction="up"
+                                                    height="190" width="230"
+                                                    scrollamount="1" scrolldelay="30"
+                                                    truespeed onmouseover="this.stop()" onmouseout="this.start()"
                                                     style="text-align: left; color: #2186C0; font-weight: normal; font-size: 13px; line-height: 1.7em;">
-                    
-					 <div align="left" >
-					  <ul>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> Java EE </strong>
-                            </li>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> Seam in action </strong>
-                            </li>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> VS2012 C# </strong>
-                            </li>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> IOS Programming </strong>
-                            </li>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> Android 3 </strong>
-                            </li>
-                            <li style="list-style:disc; margin-left:0px; border-bottom:#FF0000 solid 1px;">
-                                <strong> Ruby On Rails </strong>
-                            </li>
-                    </ul>
-                    </div>
-
-</marquee>
+					                            <div align="left">
+					                              <ul>
+                                                      <% foreach (var book in (IEnumerable<BookAgency.Models.book>)ViewData["new_arrivals"])
+                                                         { %>
+                                                            <li style="list-style:disc; border-bottom:#7CD7E4 solid 1px; width:170px;">
+                                                                <strong>
+                                                                    <a href='<%: Url.Action("Details", "Books", new { id=book.id }) %>' style="text-decoration:none; color:gray;">
+                                                                        <div style="width:170px; overflow:hidden; overflow:hidden; text-overflow: ellipsis;">
+                                                                            <%=book.book_name %>
+                                                                        </div>
+                                                                    </a>
+                                                                </strong>
+                                                            </li>
+                                                      <% } %>
+                                                </ul>
+                                            </div>
+                                            </marquee>
                                             </div>
                                         </div>
                                     </div>
@@ -172,31 +249,22 @@
                                         <h3><span class="lefttitle">Books Category</span></h3>
                                         <div class="moduletable_content">
                                             <table border="0" width="100%">
-
+                                                <% foreach (var category in (IEnumerable<BookAgency.Models.category>)ViewData["categories"])
+                                                   {%>
                                                 <tr>
                                                     <td>&raquo;</td>
-                                                    <td class="leftlink"><a href="#" class="leftlink">Java</a></td>
+                                                    <td class="leftlink">
+                                                        <a href="<%: Url.Action("Search", "Books", new { categoryId=category.id }) %>" class="leftlink">
+                                                            <%=category.category_name %>
+                                                        </a>
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>&raquo;</td>
-                                                    <td class="leftlink"><a href="#" class="leftlink">Microsoft</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>&raquo;</td>
-                                                    <td class="leftlink"><a href="#" class="leftlink">Android</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>&raquo;</td>
-                                                    <td class="leftlink"><a href="#" class="leftlink">IOS</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>&raquo;</td>
-                                                    <td class="leftlink"><a href="#" class="leftlink">Web Development</a></td>
-                                                </tr>
+                                                <% } %>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

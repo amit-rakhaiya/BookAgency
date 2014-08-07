@@ -107,7 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,7 +157,6 @@
     <Content Include="Content\css\Copy of styles.css" />
     <Content Include="Content\css\css.css" />
     <Content Include="Content\css\css3.css" />
-    <Content Include="Content\css\gk_stuff.css" />
     <Content Include="Content\css\layout.css" />
     <Content Include="Content\css\mega.css" />
     <Content Include="Content\css\patel-style.css" />
@@ -469,6 +470,11 @@
     <Content Include="Views\Books\Edit.aspx" />
     <Content Include="Views\Books\Index.aspx" />
     <Content Include="Views\Books\Search.aspx" />
+    <Content Include="Views\Category\Create.aspx" />
+    <Content Include="Views\Category\Delete.aspx" />
+    <Content Include="Views\Category\Details.aspx" />
+    <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

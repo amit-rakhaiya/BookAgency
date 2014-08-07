@@ -10,40 +10,57 @@ using PagedList;
 using PagedList.Mvc;
 
 namespace BookAgency.Controllers
-{ 
-    public class BooksController : Controller
+{
+    public class BooksController : ApplicationController
     {
-        private BookAgencyEntities db = new BookAgencyEntities();
 
+        public BooksController()
+        {
+            page_mgmt page = db.page_mgmt.Find(13);
+            ViewBag.pageDetails = page;
+        }
         //
         // GET: /Books/
-
-        public ViewResult Index()
+        public ViewResult Index(string id, int? page, int? size)
         {
-            return View(db.books.ToList());
+            int pageSize = (size ?? 10);
+            int pageNumber = (page ?? 1);
+            var booksRecords = db.books.ToList();
+            return View(booksRecords.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Search(string searchString)
+        public ActionResult Search(string searchString, string categoryId, string publisherId)
         {
+            IEnumerable<book> booksRecords = new List<book>();
             if (String.IsNullOrEmpty(searchString) == false)
             {
-                
+                booksRecords = db.books.Where(s =>
+                                    s.book_name.ToUpper().Contains(searchString.ToUpper()) ||
+                                    s.book_isbn.ToUpper().Contains(searchString.ToUpper()) ||
+                                    s.author.ToUpper().Contains(searchString.ToUpper()));
             }
-            var booksRecords = db.books.Where(s =>
-                                        s.book_name.ToUpper().Contains(searchString.ToUpper()) ||
-                                        s.book_isbn.ToUpper().Contains(searchString.ToUpper()) ||
-                                        s.author.ToUpper().Contains(searchString.ToUpper()));
-            return View(booksRecords);
-        }
 
-        private List<SelectListItem> GetCategories()
-        {
-            var selectList = new List<SelectListItem>();
-            foreach (category c in db.categories)
+            if (String.IsNullOrEmpty(categoryId) == false)
             {
-                selectList.Add(new SelectListItem { Value = c.id + "", Text = c.category_name });
+                if(String.IsNullOrEmpty(searchString) == true)
+                {
+                    booksRecords = db.books;
+                }
+                int id = Int16.Parse(categoryId);
+                booksRecords = booksRecords.Where(s => s.category_id == id);
             }
-            return selectList;
+
+            if (String.IsNullOrEmpty(publisherId) == false)
+            {
+                if (String.IsNullOrEmpty(searchString) == true && String.IsNullOrEmpty(categoryId) == true)
+                {
+                    booksRecords = db.books;
+                }
+                int id = Int16.Parse(publisherId);
+                booksRecords = booksRecords.Where(s => s.publisher_id == id);
+            }
+
+            return View(booksRecords);
         }
 
         //
@@ -56,15 +73,15 @@ namespace BookAgency.Controllers
 
         //
         // GET: /Books/Create
-
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.categories, "id", "category_name");
+            ViewBag.PublisherId = new SelectList(db.publishers, "id", "publisher_name");
             return View();
         } 
 
         //
         // POST: /Books/Create
-
         [HttpPost]
         public ActionResult Create(book book)
         {
@@ -74,7 +91,6 @@ namespace BookAgency.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");  
             }
-
             return View(book);
         }
         
@@ -84,6 +100,9 @@ namespace BookAgency.Controllers
         public ActionResult Edit(decimal id)
         {
             book book = db.books.Find(id);
+            ViewBag.CategoryId = new SelectList(db.categories, "id", "category_name", book.category_id);
+            ViewBag.PublisherId = new SelectList(db.publishers, "id", "publisher_name", book.publisher_id);
+            
             return View(book);
         }
 

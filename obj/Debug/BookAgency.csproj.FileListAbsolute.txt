@@ -66,6 +66,6 @@ E:\Projects\BookAgency\BookAgency\bin\System.Web.Razor.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.Deployment.xml
 E:\Projects\BookAgency\BookAgency\bin\System.Web.WebPages.Razor.xml
-E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.csprojResolveAssemblyReference.cache
 E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.dll
 E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.pdb
+E:\Projects\BookAgency\BookAgency\obj\Debug\BookAgency.csprojResolveAssemblyReference.cache
