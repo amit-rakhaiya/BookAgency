@@ -12,14 +12,14 @@ namespace BookAgency.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order_item
+    public partial class User
     {
-        public decimal order_item_id { get; set; }
-        public decimal order_id { get; set; }
-        public decimal book_id { get; set; }
-        public string book_name { get; set; }
-        public decimal qty { get; set; }
-        public decimal price { get; set; }
-        public decimal subtotal { get; set; }
+        public System.Guid ApplicationId { get; set; }
+        public System.Guid UserId { get; set; }
+        public string UserName { get; set; }
+        public bool IsAnonymous { get; set; }
+        public System.DateTime LastActivityDate { get; set; }
+    
+        public virtual UserInfo UserInfo { get; set; }
     }
 }

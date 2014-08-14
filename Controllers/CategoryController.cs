@@ -11,7 +11,13 @@ namespace BookAgency.Controllers
 { 
     public class CategoryController : ApplicationController
     {
-        //private BookAgencyEntities db = new BookAgencyEntities();
+
+        public CategoryController()
+        {
+            // Accessing page details from db
+            page_mgmt page = db.page_mgmt.Find(14);
+            ViewBag.pageDetails = page;
+        }
 
         //
         // GET: /Category/

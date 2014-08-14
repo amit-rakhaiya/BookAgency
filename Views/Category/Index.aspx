@@ -1,40 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<BookAgency.Models.category>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+     <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2> <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %></h2>
 
-    <p>
+    <p class="link-button">
         <%: Html.ActionLink("Create New", "Create") %>
     </p>
 
 
     <table cellpadding="0" cellspacing="0" border="1" class="display" id="example" bordercolor="#CEE6F4" >
         <tr>
-            <th>category_name
+            <th>Name
             </th>
-            <th>display_order
+            <th>Display Order
             </th>
-            <th>category_url_keyword
+            <th>Category Url Keyword
             </th>
-            <th>meta_title
+            <th>Meta Title
             </th>
-            <th>meta_keyword
+            <th>Meta-Keyword
             </th>
-            <th>meta_desc
+            <th>Meta Desc
             </th>
-            <th></th>
+            <th colspan="2">
+                Action
+            </th>
         </tr>
 
         <% foreach (var item in Model)
            { %>
         <tr>
             <td>
-                <%: Html.DisplayFor(modelItem => item.category_name) %>
+                <%: Html.ActionLink(item.category_name, "Details", new { id = item.id })%>
             </td>
             <td>
                 <%: Html.DisplayFor(modelItem => item.display_order) %>
@@ -51,10 +53,11 @@
             <td>
                 <%: Html.DisplayFor(modelItem => item.meta_desc) %>
             </td>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id=item.id }) %> |
-            <%: Html.ActionLink("Details", "Details", new { id=item.id }) %> |
-            <%: Html.ActionLink("Delete", "Delete", new { id=item.id }) %>
+            <td class="action">
+                <%: Html.ActionLink("Edit", "Edit", new { id=item.id }) %> 
+            </td>
+            <td class="action">
+                <%: Html.ActionLink("Delete", "Delete", new { id=item.id }) %>
             </td>
         </tr>
         <% } %>

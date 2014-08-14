@@ -14,7 +14,6 @@ namespace BookAgency.Controllers
 
         //
         // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
@@ -22,7 +21,6 @@ namespace BookAgency.Controllers
 
         //
         // POST: /Account/LogOn
-
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
@@ -61,6 +59,16 @@ namespace BookAgency.Controllers
         {
             FormsAuthentication.SignOut();
 
+            // clear authentication cookie
+            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            cookie1.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie1);
+
+            // clear session cookie (not necessary for our current problem but i would recommend )
+            HttpCookie cookie2 = new HttpCookie("ASP.NET_SessionId", "");
+            cookie2.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie2);
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -87,6 +95,15 @@ namespace BookAgency.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    Roles.AddUserToRole(model.UserName, "user");
+
+                    if (model.UserInfo != null)
+                    {
+                        MembershipUser mu = Membership.GetUser(model.UserName);
+                        model.UserInfo.UserId = (Guid)mu.ProviderUserKey;
+                        db.UserInfoes.Add(model.UserInfo);
+                        db.SaveChanges();
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -144,7 +161,7 @@ namespace BookAgency.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        
         //
         // GET: /Account/ChangePasswordSuccess
 

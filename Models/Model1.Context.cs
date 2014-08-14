@@ -28,9 +28,11 @@ namespace BookAgency.Models
         public DbSet<book> books { get; set; }
         public DbSet<cart> carts { get; set; }
         public DbSet<category> categories { get; set; }
-        public DbSet<order> orders { get; set; }
-        public DbSet<order_item> order_item { get; set; }
         public DbSet<page_mgmt> page_mgmt { get; set; }
         public DbSet<publisher> publishers { get; set; }
+        public DbSet<UserInfo> UserInfoes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderMaster> OrderMasters { get; set; }
     }
 }

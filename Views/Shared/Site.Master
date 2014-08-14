@@ -55,8 +55,12 @@
                                 <%= "Welcome " + FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name  %>, 
                             </td>
                             <td align="right" valign="middle">
-                                <a href="#">My Account </a>|
-                                <a href="#">Cart </a>|
+                                <% if (HttpContext.Current.User.IsInRole("user") == true)
+                                   { 
+                                %>
+                                    <a href="<%=Url.Action("UserIndex","User", new { id = (Guid)Membership.GetUser().ProviderUserKey}) %>">My Account</a>
+                                    | <a href="<%=Url.Action("Index","Cart") %>">Cart </a>| 
+                                <% } %>
                             </td>
                             <td>
                                 <%:Html.ActionLink("Log out", "LogOff", "Account") %>
@@ -141,6 +145,7 @@
                                 </div>
                             </div>
 
+                            <% if(HttpContext.Current.User.IsInRole("admin") == true) { %>
                             <div id="gk-right" class="column" style="width: 22%">
                                 <div class="gk-mass-bottom clearfix">
                                     <div class="moduletable color3">
@@ -148,55 +153,57 @@
                                         <div class="moduletable_content">
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td background="images/admin-menu-middle.gif" style="background-repeat: repeat-y;" valign="top">
+                                                    <td>
                                                         <table id="sliding-navigation" align="left" class="menutable">
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="menulink"><a href="page_mgmt.php" class="greylink11">
-                                                                        Manage CMS Pages </a></li>
+                                                                    <a href="#" class="greylink11">Manage CMS Pages </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li1"><a href="<%=Url.Action("Index","Category") %>" class="greylink11">
-                                                                        Manage Categories </a></li>
+                                                                    <a href="<%=Url.Action("Index","Category") %>" class="greylink11">Manage Categories </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li2"><a href="publishers_mgmt.php" class="greylink11">
-                                                                        Manage Publishers </a></li>
+                                                                    <a href="<%=Url.Action("Index","Publisher") %>" class="greylink11">Manage Publishers </a>
                                                                 </td>
                                                             </tr>
 
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li3"><a href="<%=Url.Action("Index","Books") %>" class="greylink11">
-                                                                        Manage Books </a></li>
+                                                                    <a href="<%=Url.Action("Index","Books") %>" class="greylink11">Manage Books </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li4"><a href="usermgmt.php" class="greylink11">
-                                                                        Manage Users </a></li>
+                                                                    <a href="<%=Url.Action("Index","User") %>" class="greylink11">Manage Users </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li5"><a href="order_mgmt.php" class="greylink11">
-                                                                        Manage Orders </a></li>
+                                                                    <a href="order_mgmt.php" class="greylink11">Manage Orders </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li6"><a href="bulksms_mgmt.php" class="greylink11">
-                                                                        Send Bulk SMS </a></li>
+                                                                    <a href="bulksms_mgmt.php" class="greylink11">Send Bulk SMS </a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&raquo;</td>
                                                                 <td>
-                                                                    <li class="sliding-element" id="Li7"><a href="change_pass.php" class="greylink11">
-                                                                        Change Password </a></li>
+                                                                    <a href="<%=Url.Action("ChangePassword","Account", new { id = (Guid)Membership.GetUser().ProviderUserKey}) %>">
+                                                                        Change Password
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -207,7 +214,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <% } %>
                             <!-- //CONTENT -->
                             <div id="gk-left" class="column" style="width: 22%">
                                 <div class="inner cleft ctop cbottom">
@@ -228,13 +235,13 @@
                                                       <% foreach (var book in (IEnumerable<BookAgency.Models.book>)ViewData["new_arrivals"])
                                                          { %>
                                                             <li style="list-style:disc; border-bottom:#7CD7E4 solid 1px; width:170px;">
-                                                                <strong>
+                                                                
                                                                     <a href='<%: Url.Action("Details", "Books", new { id=book.id }) %>' style="text-decoration:none; color:gray;">
                                                                         <div style="width:170px; overflow:hidden; overflow:hidden; text-overflow: ellipsis;">
                                                                             <%=book.book_name %>
                                                                         </div>
                                                                     </a>
-                                                                </strong>
+                                                                
                                                             </li>
                                                       <% } %>
                                                 </ul>

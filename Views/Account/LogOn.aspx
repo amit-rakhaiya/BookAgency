@@ -14,11 +14,11 @@
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
     <% using (Html.BeginForm()) { %>
-        <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
+        
         <div>
             <fieldset>
                 <legend>Account Information</legend>
-                
+                <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>

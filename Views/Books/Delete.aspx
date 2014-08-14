@@ -76,18 +76,9 @@
             
             <td style="align-content: flex-end; vertical-align: bottom;">
                 <% using (Html.BeginForm()) { %>
-                <table border="0">
-                    <tr>
-                        <td>
-                            <input type="submit" value="Delete" class="buttonblue"/>
-                        </td>
-                        <td>
-                            <a href='<%: Url.Action("Index", "Books") %>' class="buttonblue" style="color:white; text-decoration:none;">
-                            Back
-                                </a>
-                        </td>
-                    </tr>
-                </table>
+                <div>
+                    <input type="submit" value="Delete" /> | <%: Html.ActionLink("Back to List", "Index") %>
+                </div>
 				<% } %>
             </td>
         </tr>

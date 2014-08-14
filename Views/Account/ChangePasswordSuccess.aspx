@@ -7,6 +7,7 @@
 <asp:Content ID="changePasswordSuccessContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Change Password</h2>
     <p>
-        Your password has been changed successfully.
+        Your password has been changed successfully. <br />
+        <a href="<%=Url.Action("UserIndex","User", new { id = (Guid)Membership.GetUser().ProviderUserKey}) %>">Back to Account</a>
     </p>
 </asp:Content>

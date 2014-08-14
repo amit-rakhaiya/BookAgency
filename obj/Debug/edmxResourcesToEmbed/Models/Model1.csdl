@@ -4,8 +4,6 @@
     <EntitySet Name="books" EntityType="BookAgencyModel.book" />
     <EntitySet Name="carts" EntityType="BookAgencyModel.cart" />
     <EntitySet Name="categories" EntityType="BookAgencyModel.category" />
-    <EntitySet Name="orders" EntityType="BookAgencyModel.order" />
-    <EntitySet Name="order_item" EntityType="BookAgencyModel.order_item" />
     <EntitySet Name="page_mgmt" EntityType="BookAgencyModel.page_mgmt" />
     <EntitySet Name="publishers" EntityType="BookAgencyModel.publisher" />
     <AssociationSet Name="FK_books_category" Association="BookAgencyModel.FK_books_category">
@@ -15,6 +13,34 @@
     <AssociationSet Name="FK_books_publisher" Association="BookAgencyModel.FK_books_publisher">
       <End Role="publisher" EntitySet="publishers" />
       <End Role="books" EntitySet="books" />
+    </AssociationSet>
+    <EntitySet Name="UserInfoes" EntityType="BookAgencyModel.UserInfo" />
+    <EntitySet Name="Users" EntityType="BookAgencyModel.User" />
+    <AssociationSet Name="FK_UserInfo_Users" Association="BookAgencyModel.FK_UserInfo_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_UserInfo" Association="BookAgencyModel.FK_cart_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <EntitySet Name="OrderDetails" EntityType="BookAgencyModel.OrderDetail" />
+    <EntitySet Name="OrderMasters" EntityType="BookAgencyModel.OrderMaster" />
+    <AssociationSet Name="FK_order_item_OrderMaster" Association="BookAgencyModel.FK_order_item_OrderMaster">
+      <End Role="OrderMaster" EntitySet="OrderMasters" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMaster_UserInfo" Association="BookAgencyModel.FK_OrderMaster_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="OrderMaster" EntitySet="OrderMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_books" Association="BookAgencyModel.FK_cart_books">
+      <End Role="book" EntitySet="books" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_books" Association="BookAgencyModel.FK_OrderDetails_books">
+      <End Role="book" EntitySet="books" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="book">
@@ -33,6 +59,8 @@
     <Property Name="new_arrival" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
     <NavigationProperty Name="category" Relationship="BookAgencyModel.FK_books_category" FromRole="books" ToRole="category" />
     <NavigationProperty Name="publisher" Relationship="BookAgencyModel.FK_books_publisher" FromRole="books" ToRole="publisher" />
+    <NavigationProperty Name="carts" Relationship="BookAgencyModel.FK_cart_books" FromRole="book" ToRole="cart" />
+    <NavigationProperty Name="OrderDetails" Relationship="BookAgencyModel.FK_OrderDetails_books" FromRole="book" ToRole="OrderDetail" />
   </EntityType>
   <EntityType Name="cart">
     <Key>
@@ -41,7 +69,9 @@
     <Property Name="cart_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
     <Property Name="book_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
     <Property Name="qty" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
-    <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="BookAgencyModel.FK_cart_UserInfo" FromRole="cart" ToRole="UserInfo" />
+    <NavigationProperty Name="book" Relationship="BookAgencyModel.FK_cart_books" FromRole="cart" ToRole="book" />
   </EntityType>
   <EntityType Name="category">
     <Key>
@@ -55,53 +85,6 @@
     <Property Name="meta_keyword" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="meta_desc" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="books" Relationship="BookAgencyModel.FK_books_category" FromRole="category" ToRole="books" />
-  </EntityType>
-  <EntityType Name="order">
-    <Key>
-      <PropertyRef Name="order_id" />
-    </Key>
-    <Property Name="order_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="user_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="cust_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="delivery_charge" Type="Double" Nullable="false" />
-    <Property Name="status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="payment_status" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="status_detail" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="payment_amount" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="payment_currency" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="authcode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-    <Property Name="txn_id" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-    <Property Name="payer_email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="dname" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
-    <Property Name="daddress" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-    <Property Name="demail" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
-    <Property Name="dcity" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="dpincode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-    <Property Name="dstate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="dcountry" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="dphone" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
-    <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-    <Property Name="admin_note" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="order_item">
-    <Key>
-      <PropertyRef Name="order_item_id" />
-      <PropertyRef Name="order_id" />
-      <PropertyRef Name="book_id" />
-      <PropertyRef Name="book_name" />
-      <PropertyRef Name="qty" />
-      <PropertyRef Name="price" />
-      <PropertyRef Name="subtotal" />
-    </Key>
-    <Property Name="order_item_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="order_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="book_id" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="book_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="qty" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
-    <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="subtotal" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="page_mgmt">
     <Key>
@@ -149,6 +132,135 @@
       </Principal>
       <Dependent Role="books">
         <PropertyRef Name="publisher_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="address" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="city" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="state" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="country" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="telephone" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mobile" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="BookAgencyModel.FK_UserInfo_Users" FromRole="UserInfo" ToRole="User" />
+    <NavigationProperty Name="carts" Relationship="BookAgencyModel.FK_cart_UserInfo" FromRole="UserInfo" ToRole="cart" />
+    <NavigationProperty Name="OrderMasters" Relationship="BookAgencyModel.FK_OrderMaster_UserInfo" FromRole="UserInfo" ToRole="OrderMaster" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsAnonymous" Nullable="false" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserInfo" Relationship="BookAgencyModel.FK_UserInfo_Users" FromRole="User" ToRole="UserInfo" />
+  </EntityType>
+  <Association Name="FK_UserInfo_Users">
+    <End Type="BookAgencyModel.User" Role="User" Multiplicity="1" />
+    <End Type="BookAgencyModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_UserInfo">
+    <End Type="BookAgencyModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+    <End Type="BookAgencyModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="order_item_id" />
+    </Key>
+    <Property Type="Decimal" Name="order_item_id" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Decimal" Name="order_id" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Decimal" Name="book_id" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Decimal" Name="qty" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Decimal" Name="price" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="subtotal" Nullable="false" Precision="10" Scale="2" />
+    <NavigationProperty Name="OrderMaster" Relationship="BookAgencyModel.FK_order_item_OrderMaster" FromRole="OrderDetail" ToRole="OrderMaster" />
+    <NavigationProperty Name="book" Relationship="BookAgencyModel.FK_OrderDetails_books" FromRole="OrderDetail" ToRole="book" />
+  </EntityType>
+  <EntityType Name="OrderMaster">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Type="Decimal" Name="order_id" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="Decimal" Name="order_item_id" Nullable="false" Precision="11" Scale="0" />
+    <Property Type="DateTime" Name="order_date" Nullable="false" Precision="3" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="status" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Double" Name="delivery_charge" />
+    <Property Type="String" Name="payment_status" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="payment_amount" Precision="10" Scale="2" />
+    <Property Type="String" Name="payment_currency" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="BookAgencyModel.FK_order_item_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetail" />
+    <NavigationProperty Name="UserInfo" Relationship="BookAgencyModel.FK_OrderMaster_UserInfo" FromRole="OrderMaster" ToRole="UserInfo" />
+  </EntityType>
+  <Association Name="FK_order_item_OrderMaster">
+    <End Type="BookAgencyModel.OrderMaster" Role="OrderMaster" Multiplicity="1" />
+    <End Type="BookAgencyModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderMaster">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMaster_UserInfo">
+    <End Type="BookAgencyModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+    <End Type="BookAgencyModel.OrderMaster" Role="OrderMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="OrderMaster">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_books">
+    <End Type="BookAgencyModel.book" Role="book" Multiplicity="1" />
+    <End Type="BookAgencyModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_books">
+    <End Type="BookAgencyModel.book" Role="book" Multiplicity="1" />
+    <End Type="BookAgencyModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="order_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

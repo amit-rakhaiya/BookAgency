@@ -2,21 +2,21 @@
 <%@ Import Namespace="PagedList" %>
 <%@ Import Namespace="PagedList.Mvc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%: ((BookAgency.Models.page_mgmt)ViewData["pageDetails"]).page_title %>
+    <%: Html.DisplayFor(model => model.book_name) %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 style="margin-bottom: 0px;"><%: Html.DisplayFor(model => model.book_name) %></h3>
+    <h2><%: Html.DisplayFor(model => model.book_name) %></h2>
     <hr />
-    <table border="0" class="table-book-details" cellspacing="15px;">
+    <table border="0" width="100%" class="table-book-details" cellspacing="15px;">
         <tr>
-            <td>
+            <td style="padding-left:2%;">
                 <img
                     src="../../images/<%: Html.DisplayFor(model => model.photo) %>"
                     alt="<%: Html.DisplayFor(model => model.book_name) %>"
-                    style="box-shadow: 5px 5px 3px #888888; width: 230px; margin-right: 15px" />
+                    style="box-shadow: 5px 5px 3px #888888; width: 230px;" />
             </td>
-            <td>
+            <td style="padding-right:20%;">
                 <table>
                     <tr>
                         <th>
@@ -59,6 +59,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <% using (Html.BeginForm("AddToCart", "Cart", new {bookId = Model.id}))
+                           { %>
+                            <th>Quantity</th>
+                            <td>: <%:Html.TextBox("qty", null, new { @Style = "width:80px" })%></td>
+                            <td><input type="Submit" value="Add to Cart" class="button grey" style="height:25px; width:auto;"/></td>
+                        <% } %>
                     </tr>
 
                 </table>
@@ -67,19 +73,19 @@
         <tr>
             <td></td>
             <td></td>
-            <td style="align-content: flex-end; vertical-align: bottom;">
+            <td style="align-content: flex-end; vertical-align: bottom;" align="right">
                 <table border="0">
                     <tr>
-                        <td>
+                        <td class="link-button">
                             <%
                                 if (User.IsInRole("Admin"))
                                 { %>
-                            <%:Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "button grey" })%>
+                            <%:Html.ActionLink("Edit", "Edit", new { id = Model.id })%>
                             <%}
                             %> 
                         </td>
                         <td style="vertical-align: bottom;">
-                            <a href="javascript:history.go(-1)" class="button grey">Back</a>
+                            <a href="javascript:history.go(-1)">Back</a>
                         </td>
                     </tr>
                 </table>

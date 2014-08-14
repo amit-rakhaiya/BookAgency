@@ -20,10 +20,10 @@
     <EntitySetMapping Name="carts">
       <EntityTypeMapping TypeName="BookAgencyModel.cart">
         <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="cart_id" ColumnName="cart_id" />
           <ScalarProperty Name="book_id" ColumnName="book_id" />
           <ScalarProperty Name="qty" ColumnName="qty" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -37,49 +37,6 @@
           <ScalarProperty Name="meta_title" ColumnName="meta_title" />
           <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
           <ScalarProperty Name="meta_desc" ColumnName="meta_desc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="orders">
-      <EntityTypeMapping TypeName="BookAgencyModel.order">
-        <MappingFragment StoreEntitySet="order">
-          <ScalarProperty Name="order_id" ColumnName="order_id" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
-          <ScalarProperty Name="order_date" ColumnName="order_date" />
-          <ScalarProperty Name="cust_name" ColumnName="cust_name" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="delivery_charge" ColumnName="delivery_charge" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="payment_status" ColumnName="payment_status" />
-          <ScalarProperty Name="status_detail" ColumnName="status_detail" />
-          <ScalarProperty Name="payment_amount" ColumnName="payment_amount" />
-          <ScalarProperty Name="payment_currency" ColumnName="payment_currency" />
-          <ScalarProperty Name="authcode" ColumnName="authcode" />
-          <ScalarProperty Name="txn_id" ColumnName="txn_id" />
-          <ScalarProperty Name="payer_email" ColumnName="payer_email" />
-          <ScalarProperty Name="dname" ColumnName="dname" />
-          <ScalarProperty Name="daddress" ColumnName="daddress" />
-          <ScalarProperty Name="demail" ColumnName="demail" />
-          <ScalarProperty Name="dcity" ColumnName="dcity" />
-          <ScalarProperty Name="dpincode" ColumnName="dpincode" />
-          <ScalarProperty Name="dstate" ColumnName="dstate" />
-          <ScalarProperty Name="dcountry" ColumnName="dcountry" />
-          <ScalarProperty Name="dphone" ColumnName="dphone" />
-          <ScalarProperty Name="mobile" ColumnName="mobile" />
-          <ScalarProperty Name="admin_note" ColumnName="admin_note" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="order_item">
-      <EntityTypeMapping TypeName="BookAgencyModel.order_item">
-        <MappingFragment StoreEntitySet="order_item">
-          <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
-          <ScalarProperty Name="order_id" ColumnName="order_id" />
-          <ScalarProperty Name="book_id" ColumnName="book_id" />
-          <ScalarProperty Name="book_name" ColumnName="book_name" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -106,6 +63,59 @@
           <ScalarProperty Name="meta_title" ColumnName="meta_title" />
           <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
           <ScalarProperty Name="meta_desc" ColumnName="meta_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoes">
+      <EntityTypeMapping TypeName="BookAgencyModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BookAgencyModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="BookAgencyModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderMasters">
+      <EntityTypeMapping TypeName="BookAgencyModel.OrderMaster">
+        <MappingFragment StoreEntitySet="OrderMaster">
+          <ScalarProperty Name="payment_currency" ColumnName="payment_currency" />
+          <ScalarProperty Name="payment_amount" ColumnName="payment_amount" />
+          <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+          <ScalarProperty Name="delivery_charge" ColumnName="delivery_charge" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

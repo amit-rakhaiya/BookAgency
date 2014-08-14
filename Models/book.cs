@@ -12,13 +12,18 @@ namespace BookAgency.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class book
     {
+ 		public book()
+        {
+            this.carts = new HashSet<cart>();
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
         public decimal id { get; set; }
 
         [Required()]
-        [Display(Name="Name")]
+        [Display(Name = "Name")]
         public string book_name { get; set; }
 
         [Required()]
@@ -51,8 +56,10 @@ namespace BookAgency.Models
         [Required()]
         [Display(Name = "New Arrival")]
         public decimal new_arrival { get; set; }
-    
+
         public virtual category category { get; set; }
         public virtual publisher publisher { get; set; }
+        public virtual ICollection<cart> carts { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

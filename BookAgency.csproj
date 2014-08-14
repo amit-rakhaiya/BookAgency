@@ -109,8 +109,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderMasterController.cs" />
+    <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,16 +143,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\order.cs">
+    <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\order_item.cs">
+    <Compile Include="Models\OrderMaster.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\page_mgmt.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\publisher.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +186,8 @@
     <Content Include="images\btn-myaccount.gif" />
     <Content Include="images\btn-shopping-cart.gif" />
     <Content Include="images\btn.png" />
+    <Content Include="images\cart.jpg" />
+    <Content Include="images\Delete_Icon.png" />
     <Content Include="images\email-password.jpg" />
     <Content Include="images\header.jpg" />
     <Content Include="images\inner-title-sep.png" />
@@ -194,6 +206,8 @@
     <Content Include="images\myplaceorder.jpg" />
     <Content Include="images\myshoppingcart.jpg" />
     <Content Include="images\my_project.swf" />
+    <Content Include="images\order.png" />
+    <Content Include="images\password.png" />
     <Content Include="images\pba-logo.jpg" />
     <Content Include="images\PBA.png" />
     <Content Include="images\PBA2.png" />
@@ -470,12 +484,34 @@
     <Content Include="Views\Books\Edit.aspx" />
     <Content Include="Views\Books\Index.aspx" />
     <Content Include="Views\Books\Search.aspx" />
+    <Content Include="Views\Cart\Create.aspx" />
+    <Content Include="Views\Cart\Delete.aspx" />
+    <Content Include="Views\Cart\Details.aspx" />
+    <Content Include="Views\Cart\Edit.aspx" />
+    <Content Include="Views\Cart\Index.aspx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Delete.aspx" />
     <Content Include="Views\Category\Details.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
     <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\OrderMaster\Create.aspx" />
+    <Content Include="Views\OrderMaster\Delete.aspx" />
+    <Content Include="Views\OrderMaster\Details.aspx" />
+    <Content Include="Views\OrderMaster\Edit.aspx" />
+    <Content Include="Views\OrderMaster\Index.aspx" />
+    <Content Include="Views\OrderMaster\UserOrder.aspx" />
+    <Content Include="Views\Publisher\Create.aspx" />
+    <Content Include="Views\Publisher\Delete.aspx" />
+    <Content Include="Views\Publisher\Details.aspx" />
+    <Content Include="Views\Publisher\Edit.aspx" />
+    <Content Include="Views\Publisher\Index.aspx" />
+    <Content Include="Views\User\Create.aspx" />
+    <Content Include="Views\User\Delete.aspx" />
+    <Content Include="Views\User\Details.aspx" />
+    <Content Include="Views\User\Edit.aspx" />
+    <Content Include="Views\User\Index.aspx" />
+    <Content Include="Views\User\UserIndex.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

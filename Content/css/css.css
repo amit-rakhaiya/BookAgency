@@ -179,26 +179,32 @@ table.display {
     margin-bottom: 15px;
 }
 
+
+    table.display td {
+        padding: 3px 10px;
+        font-size: 11px;
+    }
     table.display th {
         font-weight: bold;
         background-color: #d3dade;
-        font-size:11px;
+        font-size: 10px;
         padding: 3px;
-        
     }
 
     table.display tr.heading2 td {
     }
 
-    table.display td {
-        padding: 3px 10px;
-    }
+    
 
     table.display tr {
     }
 
     table.display td.center {
         text-align: center;
+    }
+
+    table.display td.action a{
+        color:#f87f7f;
     }
 
 
@@ -538,19 +544,19 @@ tr.even.gradeU td.sorting_3 {
     margin-top: 20px;
 }
 
-.table-book-details TH {
-    text-align: left;
-    color: green;
-    vertical-align: top;
-    font-size: 12px;
-}
+    .table-book-details TH {
+        text-align: left;
+        color: green;
+        vertical-align: top;
+        font-size: 12px;
+    }
 
-.table-book-details TD {
-    text-align: left;
-    vertical-align: top;
-    font-size: 12px;
-    margin-left: 10px;
-}
+    .table-book-details TD {
+        text-align: left;
+        vertical-align: top;
+        font-size: 12px;
+        margin-left: 10px;
+    }
 
 fieldset {
     border: 1px solid #0098ca;
@@ -558,15 +564,15 @@ fieldset {
     /*font: 12px Georgia, "Times New Roman", Times, serif;*/
     color: #888;
     text-shadow: 1px 1px 1px #FFF;
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 
 legend {
     padding: 0.2em 0.5em;
     border: 1px solid #0098ca;
     color: #0098ca;
-    font-size:90%;
-    font-weight:bold;
+    font-size: 90%;
+    font-weight: bold;
     text-align: right;
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     border-radius: 3px;
@@ -580,12 +586,12 @@ fieldset label {
 }
 
 fieldset span {
-    margin-left:5px;
+    margin-left: 5px;
     color: red;
     font: 11px Georgia, "Times New Roman", Times, serif;
 }
 
-fieldset input[type="text"], textarea, select {
+fieldset input[type="text"], input[type="password"], textarea, select {
     border: 1px solid #DADADA;
     color: #888;
     margin-bottom: 10px;
@@ -593,10 +599,34 @@ fieldset input[type="text"], textarea, select {
     padding: 3px 3px 3px 5px;
     width: 230px;
     font-size: 12px;
-    line-height:15px;
+    line-height: 15px;
     box-shadow: inset 0px 1px 4px #ECECEC;
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
     font: 12px Georgia, "Times New Roman", Times, serif;
 }
 
+.link-button {
+    display: block;
+}
+.link-button a, a:visited {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    padding: 2px 6px 3px;
+    border: 2px thin buttonface;
+    background-color: buttonface;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 0.2em 0.5em;
+}
+
+.validation-summary-errors span, li{
+    color:red;
+    font-size:12px;
+    font:inherit;
+}
+
+.validation-summary-errors ul {
+    list-style-type: square;
+}

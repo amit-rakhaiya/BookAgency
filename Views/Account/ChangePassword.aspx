@@ -7,9 +7,6 @@
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Change Password</h2>
     <p>
-        Use the form below to change your password. 
-    </p>
-    <p>
         New passwords are required to be a minimum of <%: Membership.MinRequiredPasswordLength %> characters in length.
     </p>
 
@@ -47,7 +44,8 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Change Password" />
+                    <input type="submit" value="Change Password" /> | 
+                    <a href="<%=Url.Action("UserIndex","User", new { id = (Guid)Membership.GetUser().ProviderUserKey}) %>">Back to Account</a>
                 </p>
             </fieldset>
         </div>

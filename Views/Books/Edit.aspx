@@ -17,6 +17,8 @@
         <legend>Upate Book</legend>
 
         <%: Html.HiddenFor(model => model.id) %>
+        <%: Html.HiddenFor(model => model.category_id) %>
+        <%: Html.HiddenFor(model => model.publisher_id) %>
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.book_name) %>
@@ -90,9 +92,9 @@
             <%: Html.ValidationMessageFor(model => model.new_arrival) %>
         </div>
 
-        <p>
+        <div>
             <input type="submit" value="Save" /> | <%: Html.ActionLink("Back to List", "Index") %>
-        </p>
+        </div>
     </fieldset>
 <% } %>
 
